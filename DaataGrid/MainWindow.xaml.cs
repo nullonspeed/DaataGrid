@@ -1,4 +1,5 @@
 ﻿using DataLayerLib;
+using MVVM_Lib;
 using System.Text;
 using System.Windows;
 using System.Windows.Controls;
@@ -27,8 +28,10 @@ namespace DaataGrid
             try
             {
                 HospitalDBContext context = new HospitalDBContext();
+                
                 context.Database.EnsureDeleted();
                 context.Database.EnsureCreated();
+                this.DataContext = new HospitalViewModel().Init(context);
                 int numEx = context.Examinations.Count();
                 Title = numEx.ToString();
             }
