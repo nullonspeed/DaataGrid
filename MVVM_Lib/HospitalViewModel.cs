@@ -1,7 +1,7 @@
 
 namespace MVVM_Lib
 {
-    public class Class1
+    public class HospitalViewModel
     {
     }
 
