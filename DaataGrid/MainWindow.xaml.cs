@@ -1,4 +1,5 @@
-﻿using System.Text;
+﻿using DataLayerLib;
+using System.Text;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -19,6 +20,22 @@ namespace DaataGrid
         public MainWindow()
         {
             InitializeComponent();
+        }
+
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                HospitalDBContext context = new HospitalDBContext();
+                context.Database.EnsureDeleted();
+                context.Database.EnsureCreated();
+                int numEx = context.Examinations.Count();
+                Title = numEx.ToString();
+            }
+            catch(Exception ex) { 
+                MessageBox.Show(ex.Message);
+            }
+            
         }
     }
 }

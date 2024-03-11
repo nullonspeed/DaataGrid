@@ -11,6 +11,11 @@ namespace DataLayerLib
         public int ExaminationID {  get; set; }
         public string Description { get; set; }
 
+        public int ExaminationPatientID { get; set; }
+        public Patient? ExaminationPatient { get; set; }
+
+        public int ExaminationDoctorID { get; set; }
+        public Doctor? ExaminationDoctor { get; set; }
 
     }
 }
